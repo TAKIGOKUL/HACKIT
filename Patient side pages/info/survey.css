@@ -1,0 +1,13 @@
+body {
+  background-image: url(https://i1.wp.com/dl.img-news.com/dl/img/s0/dl/2020/09/1471701-559173709.jpeg?fit=%2C&ssl=1);
+  background-size: cover;
+}
+form {
+  background-color: white;
+}
+#error {
+  background-color: red;
+  color: white;
+  font-size: 21px;
+  padding-left: 5px;
+}

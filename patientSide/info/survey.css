@@ -1,13 +1,29 @@
+:root{
+  --bg-clr : #212032;
+}
+*{
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
 body {
-  background-image: url(https://i1.wp.com/dl.img-news.com/dl/img/s0/dl/2020/09/1471701-559173709.jpeg?fit=%2C&ssl=1);
+  /* background-image: url(https://i1.wp.com/dl.img-news.com/dl/img/s0/dl/2020/09/1471701-559173709.jpeg?fit=%2C&ssl=1); */
   background-size: cover;
+  background-color: var(--bg-clr);
 }
 form {
-  background-color: white;
+  background-color: var(--bg-clr);
+  color: aliceblue;
 }
 #error {
   background-color: red;
   color: white;
   font-size: 21px;
   padding-left: 5px;
+}
+.container{
+  color: white;
+}
+footer{
+  height: 5rem;
 }

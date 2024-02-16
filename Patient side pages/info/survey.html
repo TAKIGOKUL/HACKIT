@@ -13,12 +13,12 @@
 <body>
     
 <form class="mt-3 mb-3 w-75 pb-2 mx-auto rounded">
-            <h1 class="text-uppercase bg-danger text-light rounded">Online Shopping Survey</h1>
+            <h1 class="text-uppercase bg-danger text-light rounded">Emergency Patient Data Collection</h1>
     <div class="container description-survey">
             <p class="lead">To assure you the best and accurate First Aid , Do fill out the form correctly
             <hr class="border border-dark">
             </p>
-            <p>neque optio dolorum nam amet molestiae suscipit quis? Fugit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni blanditiis dolorum unde totam quae, labore assumenda voluptatem! Ea, odit perspiciatis?Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem esse totam eum architecto quibusdam fugiat soluta quisquam at veniam tempore.</p>
+            <p>neq optio dolorum nam amet molestiae suscipit quis? Fugit! Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni blanditiis dolorum unde totam quae, labore assumenda voluptatem! Ea, odit perspiciatis?Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem esse totam eum architecto quibusdam fugiat soluta quisquam at veniam tempore.</p>
     </div>
     <div class="personal-info">
         <div class="container">
@@ -31,56 +31,100 @@
                 <input type="text" class="form-control" id="lastname">
                 <label for="email" class="form-label mt-2">Email</label>
                 <input type="text" name='email 'class="form-control" id="email">
-                <label for="age" class="form label mt-2">What is your age?</label>
+                <label for="age" class="form label mt-2">Age</label>
                     <select class="custom-select form-control" id="age">
-                        <option selected disabled>AGE OF THE PATIENT</option>
+                        <option selected disabled>Select</option>
                         <option>0-15 years old</option>
                         <option>15-30 years old</option>
                         <option>30-45 years old</option>
                         <option>45+</option>
                       
                     </select>
-                    <label for="CONSCIOUS" class="form label mt-2"></label>
+                    <label for="CONSCIOUS" class="form label mt-2">Conscious?</label>
                     <select class="custom-select form-control" id="ethnicity">
-                        <option selected disabled>C</option>
+                        <option selected disabled>Select</option>
                         <option>YES</option>
                         <option>NO</option>
                        
                     </select>
                     
-                    <label for="BLEEDING" class="form label mt-2">B</label>
+                    <label for="BLEEDING" class="form label mt-2">Bleeding?</label>
                     <select class="custom-select form-control" id="ethnicity">
-                        <option selected disabled>Choose your ethnicity</option>
+                        <option selected disabled>Select</option>
                         <option>YES</option>
                         <option>NO</option>
                     </select>
 
-                    <label for="BLEEDING" class="form label mt-2">E</label>
+                    <label for="BREATHING" class="form label mt-2">Is the patient breathing?</label>
                     <select class="custom-select form-control" id="ethnicity">
-                        <option selected disabled>Choose your ethnicity</option>
+                        <option selected disabled>Select</option>
                         <option>YES</option>
                         <option>NO</option>
-                        <option>Latino or Hispanic</option>
-                        <option>Asian</option>
-                        <option>Native American</option>
-                        <option>Native Hawaiian or Pacific Islander</option>
-                        <option>Two or More</option>
-                        <option>Other/Unknown</option>
-                        <option>Prefer not to answer</option>
                     </select>
-                    <label for="BLEEDING" class="form label mt-2">Etnicity</label>
+
+                    <label for="PARTICLES" class="form label mt-2">Any particles on the patients body?</label>
                     <select class="custom-select form-control" id="ethnicity">
-                        <option selected disabled>Choose your ethnicity</option>
+                        <option selected disabled>Select</option>
+                        <option>YES</option><!-- if yes, add a textfield specifying what kind of particles-->
+                        <option>NO</option>
+                    </select>
+
+                    <label for="BURNS" class="form label mt-2">Any visible burns?</label>
+                    <select class="custom-select form-control" id="ethnicity">
+                        <option selected disabled>Select</option>
                         <option>YES</option>
                         <option>NO</option>
-                        <option>Latino or Hispanic</option>
-                        <option>Asian</option>
-                        <option>Native American</option>
-                        <option>Native Hawaiian or Pacific Islander</option>
-                        <option>Two or More</option>
-                        <option>Other/Unknown</option>
-                        <option>Prefer not to answer</option>
                     </select>
+
+                    <label for="WOUND" class="form label mt-2">Any open wounds?</label>
+                    <select class="custom-select form-control" id="ethnicity">
+                        <option selected disabled>Select yes even if there's a snake bite</option>
+                        <option>YES</option>
+                        <option>NO</option>
+                    </select>
+
+                    <label for="FRACTURE" class="form label mt-2">Any visible fractures or bumps </label>
+                    <select class="custom-select form-control" id="ethnicity">
+                        <option selected disabled>Select</option>
+                        <option>YES</option>
+                        <option>NO</option>
+                    </select>
+
+                    <label for="SEIZURE" class="form label mt-2">Is the patient foaming?</label>
+                    <select class="custom-select form-control" id="ethnicity">
+                        <option selected disabled>Select</option>
+                        <option>YES</option>
+                        <option>NO</option>
+                    </select>
+
+                    <label for="STROKE" class="form label mt-2">Any jerking movements?</label>
+                    <select class="custom-select form-control" id="ethnicity">
+                        <option selected disabled>Select</option>
+                        <option>YES</option>
+                        <option>NO</option>
+                    </select>
+
+<!--trying something new-->
+                    <label for="INTBLEED" class="form label mt-2">Internal Bleeding?</label><br><br>
+                    <form action="/action_page.php">
+                        <input type="checkbox" id="bruise" name="bruise" >
+                        <label for="bruise"> Bruising around navel or abdomen</label><br>
+                        <input type="checkbox" id="vehicle2" name="vehicle2" >
+                        <label for="vehicle2">Bloody vomitus or stool</label><br>
+                        <input type="checkbox" id="stool" name="vehicle3" >
+                        <label for="vehicle3"> Dizziness</label><br>
+                        <input type="checkbox" id="bruise" name="bruise" >
+                        <label for="vehicle1"> Severe weakness</label><br>
+                        <input type="checkbox" id="bruise" name="bruise" >
+                        <label for="vehicle1"> Bruising around navel or abdomen</label><br>
+                        <input type="checkbox" id="bruise" name="bruise" >
+                        <label for="vehicle1"> Fainting</label><br>
+                        <input type="checkbox" id="bruise" name="bruise" >
+                        <label for="vehicle1"> Acute visual problems</label><br>
+                        <input type="checkbox" id="bruise" name="bruise" >
+                        <label for="vehicle1"> Shortness of breath</label><br>
+                        <!--<input type="submit" value="Submit"> -->
+                    </form>
             </div>
         </div>
     </div>
@@ -110,6 +154,7 @@
                         <input type="radio" class="form-check-input" id="quest2-2" name="quest2">
                         <label for="quest2-2" class="form-check-label">No</label>
                         </div>
+                        <br>
                     <p id="question3" class="mt-3"> 3) How likely are you to buy this product online?</p>
                         <div class="range">
                             <label for="formControlRange">Very unlikely</label>
@@ -135,6 +180,7 @@
     </div>
 </form>
 <div class="wrapper">
+    <br>
 	<div id="map" class="col-12 col-md-6">
 		<span>Click the button below to show your location on the map</span>
 		<img id="preloader" src="../../assets/Rotating globe.gif">

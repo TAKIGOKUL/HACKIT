@@ -8,8 +8,10 @@
 <script src="https://kit.fontawesome.com/8beace882b.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="survey.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="map.css">
 </head>
 <body>
+    
 <form class="mt-3 mb-3 w-75 pb-2 mx-auto rounded">
             <h1 class="text-uppercase bg-danger text-light rounded">Online Shopping Survey</h1>
     <div class="container description-survey">
@@ -132,9 +134,29 @@
         </div>
     </div>
 </form>
+<div class="wrapper">
+	<div id="map" class="col-12 col-md-6">
+		<span>Click the button below to show your location on the map</span>
+		<img id="preloader" src="../../assets/Rotating globe.gif">
+	</div>
+    <div class="text-center mt-5">
+        <a class="button text-center" href="" title="">Find My Location</a>
+    </div>
+	<div id="results" class="mt-5">
+		<span class="longitude"></span><br>
+		<span class="lattitude"></span><br>
+		<span class="location"></span>
+	</div>
+    <!-- <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.uk/?ie=UTF8&amp;ll='+latitude+','+longitude+'&amp;spn=0.332359,0.617294&amp;t=m&amp;z=11&amp;output=embed"></iframe> -->
+
+	
+</div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
 <script src="survey.js"></script>
+<script src="map.js"></script>
 </body>
 </html>

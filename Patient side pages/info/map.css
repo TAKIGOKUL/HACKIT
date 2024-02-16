@@ -1,0 +1,50 @@
+@charset "utf-8";
+html{
+	background:#222222;
+	font-family:helvetica, arial, sans-serif;
+}
+.wrapper{
+	width:100%;
+	margin: 0 auto;
+	position:relative;
+}
+#map{
+	position:relative;
+	text-align: center;
+	text-transform: uppercase;
+	width: 100%;
+	height: auto;
+	margin:0 auto;
+	margin-top:20px;
+	
+}
+
+#map #preloader{
+	position: absolute;
+	display:none;
+}
+#map iframe{
+	border:1px solid black;
+}
+.button{
+	padding:4rem 2rem;
+	background-color:red;
+	color:white;
+	display:block;
+	text-decoration:none;
+	width:10rem;
+	height: 10rem;
+	border-radius: 50%;
+	margin:0 auto;
+	margin-top:20px;
+}
+.button:hover{
+	color:white;
+	background-color: rgb(189, 0, 0)
+}
+#results{
+	color: rgb(0, 180, 149);
+	position: relative;
+	text-align: center;
+	width: 100%;
+}

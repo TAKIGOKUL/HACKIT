@@ -1,0 +1,51 @@
+:root{
+    --bg-clr : #212032;
+    --red-clr: #fa4c3b;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-clr);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-title {
+    font-size: 4rem;
+    font-family:  sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bolder;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    color: #fff;
+    /* text-shadow: 0 0 50px #06abf2f2; */
+}
+
+.input-field {
+    width: 100%;
+    height: 4rem;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 10px;
+    /* background-color: var(--red-clr); */
+}
+.title{
+    font-size: 2rem;
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    color: #fff;
+}
+
+
+
+
+
+

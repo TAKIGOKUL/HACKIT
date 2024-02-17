@@ -1,9 +1,11 @@
+
 var button = jQuery('.button');
 var preloader = jQuery('#preloader');
 var longitudediv = jQuery('.longitude');
 var lattitudediv = jQuery('.lattitude');
 var locationdiv = jQuery('.location');
-
+var latitude
+var longitude
 if (navigator.geolocation) {
     // Browser supports it, we're good to go! 
 } else {

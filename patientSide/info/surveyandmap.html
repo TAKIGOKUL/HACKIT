@@ -13,16 +13,17 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="map.css">
-
-    <script src="../../login/update.js" defer type="module"></script>
+sc
+    <script src="../../Firebase/config.js" defer type="module"></script>
 </head>
 
 <body>
 
-    <form class="mt-3 mb-3 w-75 pb-2 mx-auto rounded">
+    <form  class="mt-3 mb-3 w-75 pb-2 mx-auto rounded" id="patientInfo">
         <h1 class="text-center text-uppercase bg-danger text-light rounded px-5">Emergency Patient Data Collection</h1>
         <div class="container description-survey">
-            <p class="lead">To assure you the best and accurate First Aid , Do fill out the form correctly
+            <p class="lead"> Hi <span id="userName"></span> To assure you the best and accurate First Aid , Do fill out
+                the form correctly
                 <hr class="border border-dark">
             </p>
             <p>neq optio dolorum nam amet molestiae suscipit quis? Fugit! Lorem ipsum dolor sit amet consectetur
@@ -140,53 +141,55 @@
                     <!--trying something new-->
                     <label for="INTBLEED" class="form label mt-2"><b>Internal Bleeding?</b></label><br>
                     <form action="/action_page.php">
-                        <input type="checkbox" id="bruise" name="bruise" >
+                        <input type="checkbox" id="bruise" name="bruise">
                         <label for="bruise"> Bruising around navel or abdomen</label><br>
-                        <input type="checkbox" id="stool" name="stool" >
+                        <input type="checkbox" id="stool" name="stool">
                         <label for="stool">Bloody vomitus or stool</label><br>
-                        <input type="checkbox" id="dizzy" name="dizzy" >
+                        <input type="checkbox" id="dizzy" name="dizzy">
                         <label for="dizzy"> Dizziness</label><br>
-                        <input type="checkbox" id="weak" name="weak" >
+                        <input type="checkbox" id="weak" name="weak">
                         <label for="weak"> Severe weakness</label><br>
-                        <input type="checkbox" id="Faint" name="Faint" >
+                        <input type="checkbox" id="Faint" name="Faint">
                         <label for="Faint"> Fainting</label><br>
-                        <input type="checkbox" id="vision" name="vision" >
+                        <input type="checkbox" id="vision" name="vision">
                         <label for="vision"> Acute visual problems</label><br>
-                        <input type="checkbox" id="breath" name="breath" >
+                        <input type="checkbox" id="breath" name="breath">
                         <label for="breath"> Shortness of breath</label><br>
                         <!--<input type="submit" value="Submit"> -->
                     </form>
-            </div>
-        </div>
-    </div>
-        <div class="questionnaire">
-        <div class="container">
-            <h3>Detailed Information</h3><br>
-                <div class="question">
-                    
-                    <p class="mt-4">If the patient have pain, describe the places and frequency</p>
-                        <div class="form-outline mb-2">
-                            <textarea class="form-control" id="textarea4" rows="4" placeholder="Tell us in detail about the pain and it's conditions"></textarea>
-                            <label class="form-label" for="textarea4"></label>
-                        </div>
-                    <p id="painrange" class="mt-3"> Rate the level of pain</p>
-                        <div class="range">
-                            <label for="formControlRange">0</label>
-                            <label for="customRange3" class="form-label float-right">10</label>
-                            <input type="range" class="form-control-range" min="0" max="10" step="1" id="customRange3"> 
-                        </div>
-            
-                        <p class="mt-4"><strong>Anything else:</strong></p>
-                        <div class="form-outline mb-2">
-                            <textarea class="form-control" id="textarea4" rows="4" placeholder="Tell anything else that to be shared to the doctor"></textarea>
-                            <label class="form-label" for="textarea4"></label>
-                        </div>
                 </div>
-                    <button type="button" id="buton" class="btn btn-primary btn-lg btn-block">Submit
-                    </button>
             </div>
         </div>
-    </div>
+        <div class="questionnaire">
+            <div class="container">
+                <h3>Detailed Information</h3><br>
+                <div class="question">
+
+                    <p class="mt-4">If the patient have pain, describe the places and frequency</p>
+                    <div class="form-outline mb-2">
+                        <textarea class="form-control" id="textarea4" rows="4"
+                            placeholder="Tell us in detail about the pain and it's conditions"></textarea>
+                        <label class="form-label" for="textarea4"></label>
+                    </div>
+                    <p id="painrange" class="mt-3"> Rate the level of pain</p>
+                    <div class="range">
+                        <label for="formControlRange">0</label>
+                        <label for="customRange3" class="form-label float-right">10</label>
+                        <input type="range" class="form-control-range" min="0" max="10" step="1" id="customRange3">
+                    </div>
+
+                    <p class="mt-4"><strong>Anything else:</strong></p>
+                    <div class="form-outline mb-2">
+                        <textarea class="form-control" id="textarea4" rows="4"
+                            placeholder="Tell anything else that to be shared to the doctor"></textarea>
+                        <label class="form-label" for="textarea4"></label>
+                    </div>
+                </div>
+                <button type="button" id="patientBtn" class="btn btn-primary btn-lg btn-block">Submit
+                </button>
+            </div>
+        </div>
+        </div>
     </form>
     <footer></footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>

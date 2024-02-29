@@ -26,12 +26,14 @@ let btnStopRecording = document.getElementById("btnStopRecording");
 //videoPlayback DIV
 let videoPlayback = document.getElementById("videoPlayback");
 
-
 // For PreCall
-const cameraDeviceDropDown = document.getElementById('cameraDeviceDropDown');
-const microphoneDeviceDropDown = document.getElementById('microphoneDeviceDropDown');
-const playBackDeviceDropDown = document.getElementById('playBackDeviceDropDown');
-
+const cameraDeviceDropDown = document.getElementById("cameraDeviceDropDown");
+const microphoneDeviceDropDown = document.getElementById(
+  "microphoneDeviceDropDown"
+);
+const playBackDeviceDropDown = document.getElementById(
+  "playBackDeviceDropDown"
+);
 
 let meeting = "";
 // Local participants
@@ -130,7 +132,7 @@ window.addEventListener("load", async function () {
   */
 
   const requestPermission = await window.VideoSDK.requestPermission(
-    window.VideoSDK.Constants.permission.AUDIO_AND_VIDEO,
+    window.VideoSDK.Constants.permission.AUDIO_AND_VIDEO
   );
 
   console.log(
@@ -151,10 +153,11 @@ window.addEventListener("load", async function () {
       console.log("Error in Network Stats : ", error);
     });
 
-  deviceChangeEventListener = async (devices) => { // 
+  deviceChangeEventListener = async (devices) => {
+    //
     await updateDevices();
     await enableCam();
-  }
+  };
   window.VideoSDK.on("device-changed", deviceChangeEventListener);
 });
 
@@ -162,27 +165,30 @@ async function updateDevices() {
   try {
     const checkAudioVideoPermission = await window.VideoSDK.checkPermissions();
 
-    cameraPermissionAllowed = checkAudioVideoPermission.get(window.VideoSDK.Constants.permission.VIDEO);
-    microphonePermissionAllowed = checkAudioVideoPermission.get(window.VideoSDK.Constants.permission.AUDIO);
+    cameraPermissionAllowed = checkAudioVideoPermission.get(
+      window.VideoSDK.Constants.permission.VIDEO
+    );
+    microphonePermissionAllowed = checkAudioVideoPermission.get(
+      window.VideoSDK.Constants.permission.AUDIO
+    );
 
     if (cameraPermissionAllowed) {
       const cameras = await window.VideoSDK.getCameras();
       cameraDeviceDropDown.innerHTML = "";
-      cameras.forEach(item => {
-        const option = document.createElement('option');
+      cameras.forEach((item) => {
+        const option = document.createElement("option");
         option.value = item.deviceId;
         option.text = item.label;
         cameraDeviceDropDown.appendChild(option);
       });
-
     } else {
-      const option = document.createElement('option');
+      const option = document.createElement("option");
       option.value = "Permission needed";
       option.text = "Permission needed";
       cameraDeviceDropDown.appendChild(option);
 
       cameraDeviceDropDown.disabled = true;
-      cameraDeviceDropDown.setAttribute("style", "cursor:not-allowed")
+      cameraDeviceDropDown.setAttribute("style", "cursor:not-allowed");
     }
 
     if (microphonePermissionAllowed) {
@@ -191,35 +197,34 @@ async function updateDevices() {
       microphoneDeviceDropDown.innerHTML = "";
       playBackDeviceDropDown.innerHTML = "";
 
-      microphones.forEach(item => {
-        const option = document.createElement('option');
+      microphones.forEach((item) => {
+        const option = document.createElement("option");
         option.value = item.deviceId;
         option.text = item.label;
         microphoneDeviceDropDown.appendChild(option);
       });
 
-      playBackDevices.forEach(item => {
-        const option = document.createElement('option');
+      playBackDevices.forEach((item) => {
+        const option = document.createElement("option");
         option.value = item.deviceId;
         option.text = item.label;
         playBackDeviceDropDown.appendChild(option);
       });
-
     } else {
-      const microphoneDeviceOption = document.createElement('option');
+      const microphoneDeviceOption = document.createElement("option");
       microphoneDeviceOption.value = "Permission needed";
       microphoneDeviceOption.text = "Permission needed";
       microphoneDeviceDropDown.appendChild(microphoneDeviceOption);
 
-      const playBackDeviceOption = document.createElement('option');
+      const playBackDeviceOption = document.createElement("option");
       playBackDeviceOption.value = "Permission needed";
       playBackDeviceOption.text = "Permission needed";
       playBackDeviceDropDown.appendChild(playBackDeviceOption);
 
       microphoneDeviceDropDown.disabled = true;
       playBackDeviceDropDown.disabled = true;
-      microphoneDeviceDropDown.setAttribute("style", "cursor:not-allowed")
-      playBackDeviceDropDown.setAttribute("style", "cursor:not-allowed")
+      microphoneDeviceDropDown.setAttribute("style", "cursor:not-allowed");
+      playBackDeviceDropDown.setAttribute("style", "cursor:not-allowed");
     }
   } catch (Ex) {
     console.log("Error in check permission" + Ex);
@@ -232,7 +237,6 @@ const setAudioOutputDevice = (deviceId) => {
     audioTags.item(i).setSinkId(deviceId);
   }
 };
-
 
 async function tokenGeneration() {
   if (TOKEN != "") {
@@ -286,16 +290,13 @@ async function validateMeeting(meetingId, joinMeetingName) {
       startMeeting(token, meetingId, joinMeetingName);
     }
   } else {
-    await fetch(
-      AUTH_URL + "/validatemeeting/" + meetingId,
-      {
-        method: "POST",
-        headers: {
-          Authorization: token,
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    await fetch(AUTH_URL + "/validatemeeting/" + meetingId, {
+      method: "POST",
+      headers: {
+        Authorization: token,
+        "Content-Type": "application/json",
+      },
+    })
       .then(async (result) => {
         const { meetingId } = await result.json();
         console.log(meetingId);
@@ -310,8 +311,8 @@ async function validateMeeting(meetingId, joinMeetingName) {
         }
       })
       .catch(async (e) => {
-        alert("Meeting ID Invalid", await e);
-        window.location.href = "/";
+        // alert("Meeting ID Invalid", await e);
+        // window.location.href = "/";
         return;
       });
   }
@@ -374,7 +375,9 @@ async function startMeeting(token, meetingId, name) {
 
   if (webCamEnable) {
     customVideoTrack = await window.VideoSDK.createCameraVideoTrack({
-      cameraId: cameraDeviceDropDown.value ? cameraDeviceDropDown.value : undefined,
+      cameraId: cameraDeviceDropDown.value
+        ? cameraDeviceDropDown.value
+        : undefined,
       optimizationMode: "motion",
       multiStream: false,
     });
@@ -382,7 +385,9 @@ async function startMeeting(token, meetingId, name) {
 
   if (micEnable) {
     customAudioTrack = await window.VideoSDK.createMicrophoneAudioTrack({
-      microphoneId: microphoneDeviceDropDown.value ? microphoneDeviceDropDown.value : undefined,
+      microphoneId: microphoneDeviceDropDown.value
+        ? microphoneDeviceDropDown.value
+        : undefined,
       encoderConfig: "high_quality",
       noiseConfig: {
         noiseSuppresion: true,
@@ -448,18 +453,19 @@ async function startMeeting(token, meetingId, name) {
       let { message, senderId, senderName, timestamp } = data;
       const chatBox = document.getElementById("chatArea");
       const chatTemplate = `
-          <div style="margin-bottom: 10px; ${meeting.localParticipant.id == senderId && "text-align : right"
-        }">
+          <div style="margin-bottom: 10px; ${
+            meeting.localParticipant.id == senderId && "text-align : right"
+          }">
             <span style="font-size:12px;">${senderName}</span>
             <div style="margin-top:5px">
-              <span style="background:${meeting.localParticipant.id == senderId ? "grey" : "crimson"
-        };color:white;padding:5px;border-radius:8px">${message}<span>
+              <span style="background:${
+                meeting.localParticipant.id == senderId ? "grey" : "crimson"
+              };color:white;padding:5px;border-radius:8px">${message}<span>
             </div>
           </div>
           `;
       chatBox.insertAdjacentHTML("beforeend", chatTemplate);
     });
-
   });
 
   meeting.on("meeting-left", () => {
@@ -805,7 +811,9 @@ async function enableCam() {
     let mediaStream;
     try {
       mediaStream = await window.VideoSDK.createCameraVideoTrack({
-        cameraId: cameraDeviceDropDown.value ? cameraDeviceDropDown.value : undefined,
+        cameraId: cameraDeviceDropDown.value
+          ? cameraDeviceDropDown.value
+          : undefined,
         optimizationMode: "motion",
         multiStream: false,
       });
@@ -816,15 +824,16 @@ async function enableCam() {
     if (mediaStream) {
       joinPageVideoStream = mediaStream;
       joinPageWebcam.srcObject = mediaStream;
-      joinPageWebcam.play().catch((error) =>
-        console.log("videoElem.current.play() failed", error)
-      );
+      joinPageWebcam
+        .play()
+        .catch((error) =>
+          console.log("videoElem.current.play() failed", error)
+        );
       document.getElementById("camButton").style.backgroundColor = "#DCDCDC";
       document.getElementById("offCamera").style.display = "none";
       document.getElementById("onCamera").style.display = "inline-block";
       webCamEnable = true;
     }
-
   }
 }
 
@@ -836,7 +845,6 @@ async function enableMic() {
     document.getElementById("unmuteMic").style.display = "inline-block";
   }
 }
-
 
 function copyMeetingCode() {
   copy_meeting_id.select();

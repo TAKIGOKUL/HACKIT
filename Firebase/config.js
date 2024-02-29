@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
-import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js'
+import { getFirestore, doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js'
 
 
 const firebaseConfig = {
@@ -68,23 +68,70 @@ onAuthStateChanged(auth, (user) => {
 });
 //Database Setup
 const db = getFirestore(app);
-
+//write document
 const patientBtn = document.getElementById('patientBtn');
-patientBtn && patientBtn.addEventListener('click', (e)=>{
-    const form  = document.getElementById('patientInfo');
-    console.log(form.data());
-})
+patientBtn && patientBtn.addEventListener('click', async (e) => {
+    const user = auth.currentUser;
+    const form = document.getElementById('patientInfo');
+    const formData = new FormData(form);
+    // Convert the form data to a JSON object
+    const data = Object.fromEntries(formData.entries());
+    // Log the form data to the console
+    data.name = user.displayName;
+    data.Email = user.email;
+    data.Picture = user.photoURL;
+    console.log(data);
+    await setDoc(doc(db, "patient", "pat1"), {data});
 
-// try {
-//     const docRef = await addDoc(collection(db, "users"), {
-//         first: "Ada",
-//         last: "Lovelace",
-//         born: 1815
-//     });
-//     console.log("Document written with ID: ", docRef.id);
-// } catch (e) {
-//     console.error("Error adding document: ", e);
-// }
+});
+
+//read document
+const Pname =  document.getElementById('Pname');
+const PAge =  document.getElementById('PAge');
+const Pconscious =  document.getElementById('Pconscious');
+const Pbleeding =  document.getElementById('Pbleeding');
+const Pbreathing =  document.getElementById('Pbreathing');
+const Pparticles =  document.getElementById('Pparticles');
+const Pburns = document.getElementById('Pburns');
+const Pwounds =  document.getElementById('Pwounds');
+const Pfractures =  document.getElementById('Pfractures');
+const Pfoaming =  document.getElementById('Pfoaming');
+const Pjerking =  document.getElementById('Pjerking');
+const painRange =  document.getElementById('painRange');
+
+
+
+
+const getPatientInfo = document.getElementById('getPatientInfo');
+getPatientInfo && getPatientInfo.addEventListener('click', async (e) => {
+    
+    const docRef = doc(db, "patient", "pat1");
+    const docSnap = await getDoc(docRef);
+    const patient = docSnap.data().data;
+    
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data().data);
+    } else {
+      // docSnap.data() will be undefined in this case
+      console.log("No such document!");
+    }
+    Pname.textContent = patient.name;
+    PAge.textContent = patient.age;
+    Pconscious.textContent = patient.conscious;
+    Pbleeding.textContent = patient.bleeding;
+    Pbreathing.textContent = patient.breathing;
+    Pparticles.textContent = patient.particles;
+    Pburns.textContent = patient.burns;
+    Pwounds.textContent = patient.wounds;
+    Pfractures.textContent = patient.fractures;
+    Pfoaming.textContent = patient.foaming;
+    Pjerking.textContent = patient.jerking;
+    painRange.value = patient.painRange;
+    
+
+
+    
+});
 
 
 

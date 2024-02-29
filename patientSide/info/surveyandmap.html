@@ -13,13 +13,13 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="map.css">
-sc
+    sc
     <script src="../../Firebase/config.js" defer type="module"></script>
 </head>
 
 <body>
 
-    <form  class="mt-3 mb-3 w-75 pb-2 mx-auto rounded" id="patientInfo">
+    <form class="mt-3 mb-3 w-75 pb-2 mx-auto rounded" id="patientInfo">
         <h1 class="text-center text-uppercase bg-danger text-light rounded px-5">Emergency Patient Data Collection</h1>
         <div class="container description-survey">
             <p class="lead"> Hi <span id="userName"></span> To assure you the best and accurate First Aid , Do fill out
@@ -59,14 +59,8 @@ sc
                 <div id="error"></div>
                 <h3>Personal Information</h3>
                 <div class="form-group">
-                    <label for="firstname" class="form-label">First Name</label>
-                    <input type="text" name="firstname" class="form-control" id="firstname">
-                    <label for="lastname" class="form-label mt-2">Last Name</label>
-                    <input type="text" class="form-control" id="lastname">
-                    <label for="email" class="form-label mt-2">Email</label>
-                    <input type="text" name='email ' class="form-control" id="email">
                     <label for="age" class="form label mt-2">Age</label>
-                    <select class="custom-select form-control" id="age">
+                    <select name="age" class="custom-select form-control" id="age">
                         <option selected disabled>Select</option>
                         <option>0-15 years old</option>
                         <option>15-30 years old</option>
@@ -75,7 +69,7 @@ sc
 
                     </select>
                     <label for="CONSCIOUS" class="form label mt-2">Conscious?</label>
-                    <select class="custom-select form-control" id="ethnicity">
+                    <select name="conscious" class="custom-select form-control" id="ethnicity">
                         <option selected disabled>Select</option>
                         <option>YES</option>
                         <option>NO</option>
@@ -83,63 +77,63 @@ sc
                     </select>
 
                     <label for="BLEEDING" class="form label mt-2">Bleeding?</label>
-                    <select class="custom-select form-control" id="ethnicity">
+                    <select name="bleeding" class="custom-select form-control" id="ethnicity">
                         <option selected disabled>Select</option>
                         <option>YES</option>
                         <option>NO</option>
                     </select>
 
                     <label for="BREATHING" class="form label mt-2">Is the patient breathing?</label>
-                    <select class="custom-select form-control" id="ethnicity">
+                    <select name="breathing" class="custom-select form-control" id="ethnicity">
                         <option selected disabled>Select</option>
                         <option>YES</option>
                         <option>NO</option>
                     </select>
 
                     <label for="PARTICLES" class="form label mt-2">Any particles on the patients body?</label>
-                    <select class="custom-select form-control" id="ethnicity">
+                    <select name="particles" class="custom-select form-control" id="ethnicity">
                         <option selected disabled>Select</option>
                         <option>YES</option><!-- if yes, add a textfield specifying what kind of particles-->
                         <option>NO</option>
                     </select>
 
                     <label for="BURNS" class="form label mt-2">Any visible burns?</label>
-                    <select class="custom-select form-control" id="ethnicity">
+                    <select name="burns" class="custom-select form-control" id="ethnicity">
                         <option selected disabled>Select</option>
                         <option>YES</option>
                         <option>NO</option>
                     </select>
 
                     <label for="WOUND" class="form label mt-2">Any open wounds?</label>
-                    <select class="custom-select form-control" id="ethnicity">
+                    <select name="wounds" class="custom-select form-control" id="ethnicity">
                         <option selected disabled>Select yes even if there's a snake bite</option>
                         <option>YES</option>
                         <option>NO</option>
                     </select>
 
                     <label for="FRACTURE" class="form label mt-2">Any visible fractures or bumps </label>
-                    <select class="custom-select form-control" id="ethnicity">
+                    <select name="fractures" class="custom-select form-control" id="ethnicity">
                         <option selected disabled>Select</option>
                         <option>YES</option>
                         <option>NO</option>
                     </select>
 
                     <label for="SEIZURE" class="form label mt-2">Is the patient foaming?</label>
-                    <select class="custom-select form-control" id="ethnicity">
+                    <select name="foaming" class="custom-select form-control" id="ethnicity">
                         <option selected disabled>Select</option>
                         <option>YES</option>
                         <option>NO</option>
                     </select>
 
                     <label for="STROKE" class="form label mt-2">Any jerking movements?</label>
-                    <select class="custom-select form-control" id="ethnicity">
+                    <select name="jerking" class="custom-select form-control" id="ethnicity">
                         <option selected disabled>Select</option>
                         <option>YES</option>
                         <option>NO</option>
                     </select>
 
                     <!--trying something new-->
-                    <label for="INTBLEED" class="form label mt-2"><b>Internal Bleeding?</b></label><br>
+                    <!-- <label for="INTBLEED" class="form label mt-2"><b>Internal Bleeding?</b></label><br>
                     <form action="/action_page.php">
                         <input type="checkbox" id="bruise" name="bruise">
                         <label for="bruise"> Bruising around navel or abdomen</label><br>
@@ -155,41 +149,35 @@ sc
                         <label for="vision"> Acute visual problems</label><br>
                         <input type="checkbox" id="breath" name="breath">
                         <label for="breath"> Shortness of breath</label><br>
-                        <!--<input type="submit" value="Submit"> -->
-                    </form>
+                    </form> -->
+                    <h3 class="mt-5">Detailed Information</h3><br>
+
+                    <div class="question">
+                        <p id="painrange" class="mt-3"> Rate the level of pain</p>
+
+                        <div class="range">
+                            <label for="formControlRange">0</label>
+                            <label for="customRange3" class="form-label float-right">10</label>
+                            <input name="painRange" type="range" class="form-control-range" min="0" max="10" step="1" id="customRange3">
+                        </div>
+
+                        <p class="mt-4">If the patient have pain, describe the places and frequency</p>
+                        <div class="form-outline mb-2">
+                            <input type="text" name="detailedInfo" class="form-control" id="textarea4" rows="4"
+                                placeholder="Tell us in detail about the pain and it's conditions">
+
+                            <label class="form-label" for="textarea4"></label>
+                        </div>
+                        <button type="button" id="patientBtn"
+                            class="btn btn-primary btn-lg btn-block mt-5">Submit</button>
+
+
+
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="questionnaire">
-            <div class="container">
-                <h3>Detailed Information</h3><br>
-                <div class="question">
 
-                    <p class="mt-4">If the patient have pain, describe the places and frequency</p>
-                    <div class="form-outline mb-2">
-                        <textarea class="form-control" id="textarea4" rows="4"
-                            placeholder="Tell us in detail about the pain and it's conditions"></textarea>
-                        <label class="form-label" for="textarea4"></label>
-                    </div>
-                    <p id="painrange" class="mt-3"> Rate the level of pain</p>
-                    <div class="range">
-                        <label for="formControlRange">0</label>
-                        <label for="customRange3" class="form-label float-right">10</label>
-                        <input type="range" class="form-control-range" min="0" max="10" step="1" id="customRange3">
-                    </div>
-
-                    <p class="mt-4"><strong>Anything else:</strong></p>
-                    <div class="form-outline mb-2">
-                        <textarea class="form-control" id="textarea4" rows="4"
-                            placeholder="Tell anything else that to be shared to the doctor"></textarea>
-                        <label class="form-label" for="textarea4"></label>
-                    </div>
-                </div>
-                <button type="button" id="patientBtn" class="btn btn-primary btn-lg btn-block">Submit
-                </button>
-            </div>
-        </div>
-        </div>
     </form>
     <footer></footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
